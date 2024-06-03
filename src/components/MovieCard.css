@@ -1,0 +1,38 @@
+/* src/components/MovieCard.css */
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5열 그리드 */
+  gap: 16px;
+  padding: 20px;
+}
+
+.movie-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #2e6da4;
+  color: white;
+  cursor: pointer;
+}
+
+.movie-card img {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ccc;
+}
+
+.movie-info {
+  padding: 10px;
+}
+
+.movie-info h2 {
+  font-size: 1.2em;
+  margin: 10px 0 5px;
+}
+
+.movie-info p {
+  font-size: 0.9em;
+  color: #ddd;
+}

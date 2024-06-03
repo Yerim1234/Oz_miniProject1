@@ -7,14 +7,14 @@ import './MovieCard.css';
 const MovieCard = () => {
   const history = useHistory();
 
-  const handleCardClick = (movie) => {
-    history.push(`/details/${movie.id}`);
+  const handleCardClick = () => {
+    history.push(`/details`);
   };
 
   return (
     <div className="movie-list">
       {movieListData.results.map((movie) => (
-        <div key={movie.id} className="movie-card" onClick={() => handleCardClick(movie)}>
+        <div key={movie.id} className="movie-card" onClick={handleCardClick}>
           <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
           <div className="movie-info">
             <h2>{movie.title}</h2>

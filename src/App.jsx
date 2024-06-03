@@ -9,7 +9,7 @@ const App = () => {
   return (
     <div className="app">
       <Switch>
-        <Route path="/details/:id" component={MovieDetail} />
+        <Route path="/details" component={MovieDetail} />
         <Route path="/" component={MovieCard} />
       </Switch>
     </div>

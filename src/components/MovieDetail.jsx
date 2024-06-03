@@ -1,20 +1,14 @@
 // src/components/MovieDetail.jsx
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import movieDetailData from '../../movieDetailData.json';
 import './MovieDetail.css';
 
 const MovieDetail = () => {
-  const { id } = useParams();
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
-    if (movieDetailData.id === parseInt(id, 10)) {
-      setMovie(movieDetailData);
-    } else {
-      console.error('Movie not found for ID:', id);
-    }
-  }, [id]);
+    setMovie(movieDetailData);
+  }, []);
 
   if (!movie) return <div>Loading...</div>;
 

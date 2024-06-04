@@ -1,14 +1,27 @@
 // src/components/MovieDetail.jsx
 import React, { useState, useEffect } from 'react';
-import movieDetailData from '../../movieDetailData.json';
+import { useParams } from 'react-router-dom';
 import './MovieDetail.css';
 
+const API_KEY = import.meta.env.VITE_TMDB_ACCESS_KEY;
+
 const MovieDetail = () => {
+  const { id } = useParams();
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
-    setMovie(movieDetailData);
-  }, []);
+    const fetchMovieDetails = async () => {
+      try {
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=ko-KR`);
+        const data = await response.json();
+        setMovie(data);
+      } catch (error) {
+        console.error('Error fetching movie details:', error);
+      }
+    };
+
+    fetchMovieDetails();
+  }, [id]);
 
   if (!movie) return <div>Loading...</div>;
 

@@ -1,9 +1,13 @@
 /* src/components/MovieCard.css */
 .movie-list {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5열 그리드 */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 16px;
-  padding: 20px;
+  padding: 80px 20px 20px; /* 상단 패딩을 늘려 NavBar 아래에 공간 확보 */
+  background-color: #f0f0f0;
+  max-width: 1200px; /* 최대 너비 설정 */
+  margin: 0 auto; /* 중앙 정렬 */
+  box-sizing: border-box;
 }
 
 .movie-card {
@@ -15,16 +19,29 @@
   background-color: #2e6da4;
   color: white;
   cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .movie-card img {
   width: 100%;
   height: auto;
   border-bottom: 1px solid #ccc;
+  object-fit: cover; /* 이미지 비율 유지 */
 }
 
 .movie-info {
   padding: 10px;
+  flex-grow: 1; /* 남은 공간을 채우도록 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .movie-info h2 {
@@ -35,4 +52,22 @@
 .movie-info p {
   font-size: 0.9em;
   color: #ddd;
+}
+
+@media (max-width: 1200px) {
+  .movie-list {
+    padding-top: 15px; 
+  }
+}
+
+@media (max-width: 768px) {
+  .movie-list {
+    padding-top: 10px; 
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-list {
+    padding-top: 5px; 
+  }
 }

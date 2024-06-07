@@ -2,32 +2,37 @@
 .app {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
-.container {
-  padding: 1600px 20px 20px 20px;
-  overflow: visible;
+.movie-list {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-  flex-grow: 1; 
+  padding: 80px 20px 20px;
+  background-color: #f0f0f0;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-@media (max-width: 1200px) {
-  .container {
-    padding-top: 600px; 
+@media (max-width: 1024px) {
+  .movie-list {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .container {
-    padding-top: 300px; 
+  .movie-list {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 480px) {
-  .container {
-    padding-top: 100px; 
+  .movie-list {
+    grid-template-columns: 1fr;
   }
+}
+
+.content {
+  width: 100%;
+  height: 100%;
 }

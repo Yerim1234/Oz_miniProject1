@@ -1,27 +1,38 @@
 /* src/components/MovieCard.css */
-.movie-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
-  padding: 80px 20px 20px; /* 상단 패딩을 늘려 NavBar 아래에 공간 확보 */
-  background-color: #f0f0f0;
-  max-width: 1200px; /* 최대 너비 설정 */
-  margin: 0 auto; /* 중앙 정렬 */
+
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  padding: 400px 20px 20px 20px;
+  background-color: #f0f0f0;
+  
+}
+
 .movie-card {
-  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
   border-radius: 8px;
   overflow: hidden;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #2e6da4;
-  color: white;
+  background-color: #fff;
+  color: black;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
 }
 
 .movie-card:hover {
@@ -31,43 +42,36 @@
 
 .movie-card img {
   width: 100%;
-  height: auto;
+  height: 100%;
   border-bottom: 1px solid #ccc;
-  object-fit: cover; /* 이미지 비율 유지 */
 }
 
 .movie-info {
   padding: 10px;
-  flex-grow: 1; /* 남은 공간을 채우도록 */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .movie-info h2 {
-  font-size: 1.2em;
+  font-size: 0.9rem;
   margin: 10px 0 5px;
 }
 
 .movie-info p {
-  font-size: 0.9em;
-  color: #ddd;
+  font-size: 0.7rem;
+  color: #555;
 }
 
-@media (max-width: 1200px) {
-  .movie-list {
-    padding-top: 15px; 
-  }
-}
-
+/* Media Queries */
 @media (max-width: 768px) {
   .movie-list {
-    padding-top: 10px; 
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   }
 }
 
 @media (max-width: 480px) {
   .movie-list {
-    padding-top: 5px; 
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    padding-top: 100px
   }
+  
 }

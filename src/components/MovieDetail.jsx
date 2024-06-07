@@ -27,9 +27,6 @@ const MovieDetail = () => {
 
   return (
     <div className="movie-detail-container">
-      <div className="backdrop">
-        <img src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} alt={movie.title} />
-      </div>
       <div className="details">
         <div className="poster">
           <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />

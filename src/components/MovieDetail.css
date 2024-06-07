@@ -1,64 +1,89 @@
 /* src/components/MovieDetail.css */
 .movie-detail-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  background-color: #f0f0f0;
-}
-
-.backdrop img {
-  width: 100%;
-  max-height: 300px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 20px;
-}
-
-.details {
-  display: flex;
   flex-direction: row;
-  gap: 20px;
-  width: 100%;
-  max-width: 1200px;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.poster {
+  flex: 1;
+  max-width: 300px;
 }
 
 .poster img {
-  width: 300px;
-  height: auto;
+  width: 100%;
   border-radius: 8px;
 }
 
-.info {
+.details {
+  flex: 2;
+  margin-left: 20px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  position: relative;
+}
+
+.info {
+  margin-bottom: 20px;
 }
 
 .info h1 {
   font-size: 2em;
-  margin: 0;
+  margin: 0 0 10px 0;
 }
 
-.info .tagline {
+.info p {
+  margin: 5px 0;
+}
+
+.tagline {
   font-style: italic;
-  color: #555;
+  color: #aaa;
 }
 
-.info .rating {
+.rating {
   font-size: 1em;
-  margin: 0;
-  position: absolute;
-  top: 0;
-  right: 0;
   background: #fff;
+  color: #000;
   padding: 5px 10px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: inline-block;
 }
 
-.info .genres, .info .overview {
-  font-size: 1em;
-  margin: 0;
+.overview {
+  margin-top: 20px;
+  line-height: 1.5;
+}
+
+/* 태블릿 뷰포트 */
+@media (max-width: 768px) {
+  .movie-detail-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .details {
+    margin-left: 0;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .poster {
+    max-width: 100%;
+  }
+}
+
+/* 모바일 뷰포트 */
+@media (max-width: 480px) {
+  .details h1 {
+    font-size: 1.5em;
+  }
+
+  .details p {
+    font-size: 0.9em;
+  }
+
+  .details .overview {
+    font-size: 0.9em;
+  }
 }

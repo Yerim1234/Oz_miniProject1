@@ -1,13 +1,13 @@
 // src/components/MovieCard.jsx
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './MovieCard.css';
 
 const MovieCard = ({ movie }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleCardClick = (id) => {
-    history.push(`/details/${id}`);
+    navigate(`/details/${id}`);
   };
 
   return (

@@ -7,7 +7,7 @@ const MovieCard = ({ movie }) => {
   const navigate = useNavigate();
 
   const handleCardClick = (id) => {
-    navigate(`/details/${id}`);
+    navigate(`/detail/${id}`);
   };
 
   return (

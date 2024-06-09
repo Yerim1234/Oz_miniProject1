@@ -1,72 +1,73 @@
 // src/components/NavBar.jsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { auth } from '../firebase';
 import './NavBar.css';
 import logoImage from '../assets/MovieLogo.png';
-import useDebounce from '../hooks/useDebounce';
 
-const NavBar = ({ setMovies, fetchInitialMovies }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+const NavBar = () => {
+  const [user, setUser] = useState(null);
+  const [initializing, setInitializing] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
-  const handleSignupClick = () => {
-    navigate('/signup');
-  };
-
-  const handleLoginClick = () => {
-    navigate('/login');
-  };
-
-  const handleLogoClick = () => {
-    navigate('/');
-  };
-
   useEffect(() => {
-    if (debouncedSearchTerm.trim() === '') {
-      fetchInitialMovies();
-      return;
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setInitializing(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      setUser(null);
+      navigate('/');
+    } catch (error) {
+      console.error('Error logging out:', error);
     }
-
-    const API_KEY = import.meta.env.VITE_TMDB_ACCESS_KEY;
-    const SEARCH_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=ko-KR&query=${debouncedSearchTerm}`;
-
-    const fetchSearchResults = async () => {
-      try {
-        const response = await fetch(SEARCH_URL);
-        const data = await response.json();
-        setMovies(data.results);
-        navigate('/');
-      } catch (error) {
-        console.error('Error fetching search results:', error);
-      }
-    };
-
-    fetchSearchResults();
-  }, [debouncedSearchTerm, fetchInitialMovies, setMovies]);
-
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
   };
 
   return (
     <nav className="navbar">
-      <div className="logo-container" onClick={handleLogoClick}>
+      <div className="logo-container" onClick={() => navigate('/')}>
         <img src={logoImage} alt="MyMovieApp Logo" className="logo-icon" />
         <span className="logo-text">MyMovieApp</span>
       </div>
       <div className="search-container">
         <input
           type="text"
-          value={searchTerm}
-          onChange={handleSearchChange}
           placeholder="영화 검색..."
           className="search-input"
         />
       </div>
       <div className="auth-buttons">
-        <button className="btn" onClick={handleSignupClick}>회원가입</button>
-        <button className="btn" onClick={handleLoginClick}>로그인</button>
+        {initializing ? (
+          <div className="loading">Loading...</div>
+        ) : user ? (
+          <>
+            <img
+              src={user.photoURL || 'https://via.placeholder.com/150'}
+              alt="User Thumbnail"
+              className="user-thumbnail"
+              onClick={() => setMenuOpen(!menuOpen)}
+            />
+            {menuOpen && (
+              <div className="dropdown-menu">
+                <button onClick={() => navigate('/mypage')}>마이 페이지</button>
+                <button onClick={handleLogout}>로그아웃</button>
+              </div>
+            )}
+          </>
+        ) : (
+          <>
+            <button className="btn" onClick={() => navigate('/signup')}>회원가입</button>
+            <button className="btn" onClick={() => navigate('/login')}>로그인</button>
+          </>
+        )}
       </div>
     </nav>
   );

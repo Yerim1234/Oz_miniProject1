@@ -2,6 +2,11 @@
 .app {
   display: flex;
   flex-direction: column;
+  height: calc(100% - 100px);
+}
+
+li {
+  list-style-type: none;
 }
 
 .movie-list {

@@ -1,13 +1,13 @@
 /* src/components/MovieDetail.css */
+
 .movie-detail-container {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 20px;
+  padding: 80px;
+  background-color: #f0f0f0;
+  height: 100%;
+  width: 100%;
 }
 
 .poster {
-  flex: 1;
   max-width: 300px;
 }
 
@@ -17,14 +17,12 @@
 }
 
 .details {
-  flex: 2;
-  margin-left: 20px;
   display: flex;
-  flex-direction: column;
+  margin-left: 20px;
 }
 
 .info {
-  margin-bottom: 20px;
+  margin: 50px;
 }
 
 .info h1 {
@@ -51,39 +49,9 @@
 }
 
 .overview {
+  max-width: 300px;
   margin-top: 20px;
   line-height: 1.5;
 }
 
-/* 태블릿 뷰포트 */
-@media (max-width: 768px) {
-  .movie-detail-container {
-    flex-direction: column;
-    align-items: center;
-  }
 
-  .details {
-    margin-left: 0;
-    margin-top: 20px;
-    text-align: center;
-  }
-
-  .poster {
-    max-width: 100%;
-  }
-}
-
-/* 모바일 뷰포트 */
-@media (max-width: 480px) {
-  .details h1 {
-    font-size: 1.5em;
-  }
-
-  .details p {
-    font-size: 0.9em;
-  }
-
-  .details .overview {
-    font-size: 0.9em;
-  }
-}

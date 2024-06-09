@@ -10,7 +10,7 @@
   background-color: #333;
   padding: 10px 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* 다른 요소 위에 배치되도록 설정 */
+  z-index: 1000;
 }
 
 .logo-container {
@@ -43,7 +43,6 @@
   margin-right: 10px;
 }
 
-
 .auth-buttons {
   display: flex;
   gap: 10px;
@@ -62,46 +61,33 @@
   background-color: #4cae4c;
 }
 
-@media (max-width: 768px) {
-
-  .logo-container {
-    display: none;
-  }
-
-  .logo-icon {
-    display: none;
-  }
-
-  .search-container {
-    width: 100%;
-    justify-content: center;
-  }
-
- .auth-buttons {
-  width: 80%;
-  justify-content: end;
+.user-thumbnail {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-  
+.dropdown-menu {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
 }
 
-@media (max-width: 480px) {
-  .logo-container {
-    display: none;
-  }
-
-  .logo-icon {
-    display: none;
-  }
-
-  .search-container {
-    width: 100%;
-    justify-content: center;
-  }
-
- .auth-buttons {
-  width: 80%;
-  justify-content: end;
+.dropdown-menu button {
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
+.dropdown-menu button:hover {
+  background-color: #f0f0f0;
 }

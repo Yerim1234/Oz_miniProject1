@@ -1,0 +1,64 @@
+/* src/components/MovieCard.css */
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 80px 20px 20px; /* 상단 패딩을 늘려 NavBar 아래에 공간 확보 */
+  background-color: #f0f0f0;
+  margin: 0 auto; /* 중앙 정렬 */
+  box-sizing: border-box;
+}
+
+.movie-card {
+  overflow: hidden;
+  text-align: center;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.movie-card img {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+}
+
+.movie-info {
+  padding: 10px;
+  justify-content: center;
+}
+
+.movie-info h2 {
+  font-size: 1.2em;
+  margin: 10px 0 5px;
+}
+
+.movie-info p {
+  font-size: 0.9em;
+  color: black;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+  .movie-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .movie-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-list {
+    grid-template-columns: 1fr;
+  }
+}

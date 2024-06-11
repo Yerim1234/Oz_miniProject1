@@ -28,16 +28,16 @@ const Login = () => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      console.log('User logged in:', user);
+      console.log('사용자 로그인: ', user);
       navigate('/'); // 로그인 성공 시 홈 페이지로 이동
     } catch (error) {
-      console.error('Error logging in:', error);
-      alert('Error logging in: ' + error.message);
+      console.error('로그인 에러: ', error);
+      alert('아이디나 비밀번호가 일치하지 않습니다');
     }
   };
 
   const handleGoogleLoginSuccess = (user) => {
-    console.log('Google user logged in:', user);
+    console.log('구글 사용자 로그인: ', user);
     navigate('/'); // 구글 로그인 성공 시 홈 페이지로 이동
   };
 

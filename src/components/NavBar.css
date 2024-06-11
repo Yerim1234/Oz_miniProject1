@@ -1,4 +1,5 @@
 /* src/components/NavBar.css */
+
 .navbar {
   position: fixed;
   top: 0;
@@ -10,7 +11,7 @@
   background-color: #333;
   padding: 10px 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+  z-index: 1000; /* 다른 요소 위에 배치되도록 설정 */
 }
 
 .logo-container {
@@ -64,30 +65,56 @@
 .user-thumbnail {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
+  border-radius: 50px;
 }
 
 .dropdown-menu {
   position: absolute;
   top: 60px;
-  right: 10px;
+  right: 20px;
   display: flex;
   flex-direction: column;
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1001;
+  z-index: 1000;
 }
 
 .dropdown-menu button {
-  padding: 10px;
-  background-color: transparent;
+  padding: 10px 20px;
   border: none;
+  background: none;
   cursor: pointer;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
 }
 
 .dropdown-menu button:hover {
   background-color: #f0f0f0;
+}
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .logo-text {
+    display: none; 
+  }
+
+  .dropdown-menu {
+    right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-text {
+    display: none; 
+  }
+
+  .btn {
+    font-size: 11px;
+  }
+
+  .search-input {
+    font-size: 13px;
+  }
 }
